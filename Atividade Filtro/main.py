@@ -2,7 +2,7 @@ from typing import List
 from Kernel import Kernel, init
 
 def filter_function(image: List[List[int]], kernel: List[List[int]]):
-    stride = (1,1)
+    stride = (1,2)
 
 
     linKernel = len(kernel)
@@ -24,9 +24,9 @@ def filter_function(image: List[List[int]], kernel: List[List[int]]):
         quantl -= 1
 
     #aqui vamos percorrer a imagem
-    for i in range(len(image)):
+    for i in range(0, len(image), stride[0]):
         new_lin = []
-        for j in range(len(image[i])):
+        for j in range(0, len(image[i]), stride[1]):
             soma = 0
             soma_kernel = 0 
             #aqui vamos percorrer o kernel e a 'matriz em volta do nosso querido e almejado pixel
