@@ -10,7 +10,7 @@ def filter_function(image: List[List[int]], kernel: List[List[int]]):
 
     coluna = []
     linha = []
-    filtered = [linha[:] for linha in image]
+    filtered = []
    
     quantc = colKernel // 2
     quantl = linKernel // 2
@@ -25,6 +25,7 @@ def filter_function(image: List[List[int]], kernel: List[List[int]]):
 
     #aqui vamos percorrer a imagem
     for i in range(len(image)):
+        new_lin = []
         for j in range(len(image[i])):
             soma = 0
             soma_kernel = 0 
@@ -45,8 +46,8 @@ def filter_function(image: List[List[int]], kernel: List[List[int]]):
             elif(soma < 0):
                 soma = 0
                 
-            filtered[i][j] = soma
-
+            new_lin.append(soma)
+        filtered.append(new_lin)
     return filtered
 
 Kernel = Kernel("minion.png", filter_function)  
